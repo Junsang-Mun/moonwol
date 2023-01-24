@@ -10,15 +10,23 @@ enum layers {
 };
 
 enum custom_keycodes {
+    KC_WON = SAFE_RANGE,
     MA_PASS,
     MA_LANG,
     MA_SPOT,
     DS_LEFT,
     DS_RGHT,
+    TAB_L,
+    TAB_R,
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
+    case KC_WON:
+        if (record->event.pressed) {
+            SEND_STRING("₩");
+        }
+        break;
     case MA_PASS:
         if (record->event.pressed) {
             SEND_STRING(_PASSWORD);
@@ -44,32 +52,31 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             send_string(SS_LCTL(SS_TAP(X_RGHT)));
         }
         break;
+    case TAB_L:
+        if (record->event.pressed) {
+            send_string(SS_LCTL(SS_TAP(X_TAB)));
+        }
+        break;
+    case TAB_R:
+        if (record->event.pressed) {
+            send_string(SS_LSFT(SS_LCTL(SS_TAP(X_TAB))));
+        }
+        break;
     }
     return true;
 };
 
 // Custom Keycodes
-
-// Shift
 #define KC_MZ LSFT_T(KC_Z)
 #define KC_MSLSH LSFT_T(KC_SLSH)
-// GUI
-#define KC_MC LGUI_T(KC_C)
-#define KC_MCOMM LGUI_T(KC_COMM)
-// ALT
-#define KC_MX LALT_T(KC_X)
-#define KC_MDOT LGUI_T(KC_DOT)
-// Control
 #define KC_MA LCTL_T(KC_A)
 #define KC_MSCLN LCTL_T(KC_SCLN)
 
-// Mouse Keys
 #define MS_LCLK KC_MS_BTN1
 #define MS_RCLK KC_MS_BTN2
 #define MS_W_UP KC_MS_WH_UP
 #define MS_W_DN KC_MS_WH_DOWN
 
-// Thumb Clusters
 #define TC_1 LT(MO1, KC_TAB)
 #define TC_2 LT(MO2, KC_SPC)
 #define TC_3 LT(MO3, KC_ENT)
@@ -78,10 +85,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 // Combo keys
 const uint16_t PROGMEM c_esc[] = {KC_W, KC_E, COMBO_END};
+const uint16_t PROGMEM c_lcmd[] = {KC_S, KC_D, COMBO_END};
+const uint16_t PROGMEM c_rcmd[] = {KC_K, KC_L, COMBO_END};
+const uint16_t PROGMEM c_bsp[] = {KC_J, KC_K, COMBO_END};
+
 const uint16_t PROGMEM c_lang[] = {KC_MA, TC_2, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
     COMBO(c_esc, KC_ESC),
+    COMBO(c_lcmd, KC_LGUI),
+    COMBO(c_rcmd, KC_LGUI),
+    COMBO(c_bsp, KC_BSPC),
     COMBO(c_lang, MA_LANG),
 };
 
@@ -92,29 +106,29 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // |--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------|
     KC_MA,   KC_S,    KC_D,    KC_F,    KC_G,       KC_H,    KC_J,    KC_K,    KC_L,    KC_MSCLN,
 // |--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------|
-    KC_MZ,   KC_MX,   KC_MC,   KC_V,    KC_B,       KC_N,    KC_M,    KC_MCOMM,KC_MDOT, KC_MSLSH,
+    KC_MZ,   KC_X,    KC_C,    KC_V,    KC_B,       KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_MSLSH,
 // |--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------|
                                TC_1,    TC_2,       TC_3,    TC_4
 ),
 
 [MO1] = LAYOUT(
 // |--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------|
-    MA_PASS, _______, KC_UP,   _______, DT_UP,      _______, _______, _______, _______, _______,
+    _______, _______, KC_UP,   _______, DT_UP,      MS_W_UP, MS_LCLK, KC_MS_U, MS_RCLK, MS_W_UP,
 // |--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------|
-    KC_LCTL, KC_LEFT, KC_DOWN, KC_RGHT, DT_PRNT,    _______, KC_MPRV, KC_MPLY, KC_MNXT, _______,
+    MA_PASS, KC_LEFT, KC_DOWN, KC_RGHT, DT_PRNT,    MS_W_DN, KC_MS_L, KC_MS_D, KC_MS_R, MS_W_DN,
 // |--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------|
-    _______, DS_LEFT, _______, DS_RGHT, DT_DOWN,    KC_VOLD, KC_VOLU, KC_BRID, KC_BRIU, _______,
+    _______, DS_LEFT, _______, DS_RGHT, DT_DOWN,    _______, TAB_R,   _______, TAB_L,   _______,
 // |--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------|
                                _______, _______,    _______, _______
 ),
 
 [MO2] = LAYOUT(
 // |--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------|
-    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,       KC_6,    KC_7,    KC_8,    KC_9,    KC_0,
-// |--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------|
     KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,    KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN,
 // |--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------|
-    KC_EXLM, KC_HASH, KC_LCBR, KC_RCBR, KC_TILD,    KC_AMPR, KC_UNDS, KC_EQL,  KC_PERC, KC_CIRC,
+    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,       KC_6,    KC_7,    KC_8,    KC_9,    KC_0,
+// |--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------|
+    KC_GRV,  KC_LT,   KC_LCBR, KC_RCBR, KC_UNDS,    KC_EQL,  KC_LBRC, KC_RBRC, KC_GT,   KC_TILD,
 // |--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------|
                                _______, _______,    KC_DQT,  KC_QUOT
 ),
@@ -132,11 +146,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [MO4] = LAYOUT(
 // |--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------|
-    KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,    KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN,
+    _______, _______, _______, _______, _______,    _______, _______, _______, _______, _______,
 // |--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------|
-    KC_DLR,  KC_PLUS, KC_LPRN, KC_RPRN, KC_AT,      KC_PIPE, KC_UNDS, KC_EQL,  KC_DQT,  KC_QUOT,
+    _______, KC_DLR,  KC_QUES, KC_AMPR, _______,    KC_UNDS, KC_EQL,  KC_LPRN, KC_RPRN, KC_QUOT,
 // |--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------|
-    KC_EXLM, KC_HASH, KC_LCBR, KC_RCBR, KC_TILD,    KC_AMPR, KC_LBRC, KC_RBRC, KC_PERC, KC_CIRC,
+    _______, KC_WON,  KC_EXLM, KC_PIPE, _______,    KC_ASTR, KC_LBRC, KC_LCBR, KC_RCBR, KC_DQT,
 // |--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------|
                                _______, _______,    _______, _______
 ),
