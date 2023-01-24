@@ -46,19 +46,9 @@ Some guys put `shift` key in the index finger spot and they claim that index fin
 
 I had to put tap-hold keys(Of course I already tried to replace tap-hold keys to combo keys, but the result fucked me up) for convenience, but putting them in rarely used keys so that my typing experience won't get ruined.
 
-### Layer 1: Numbers & Symbols
+### Layer 1: Arrows
 
 ![Layer 1](./layer/1.png)
-
-Numbers are on the home row because it is more easier to access than other position.
-
-For quick adaptive from 60% key layout, symbols are following the 60% layout.
-
-And should be aware that **quots are in the thumb finger** row.
-
-### Layer 2: Arrows
-
-![Layer 2](./layer/2.png)
 
 Arrows, Arrows, Arrows!
 
@@ -67,6 +57,16 @@ No home rows, but personally think that tapping term key should exists for every
 Desktop left/right keys are exists for macOS. They work just like `control` + `left` or `right`.
 
 Tab left/right keys for switching tabs in VSCode, Chrome, or other applications that supports switching tabs. `control` + `tab` for tab right, `control` + `shift` + `tab` for tab left.
+
+### Layer 2: Numbers & Symbols
+
+![Layer 2](./layer/2.png)
+
+Numbers are on the home row because it is more easier to access than other position.
+
+For quick adaptive from 60% key layout, symbols are following the 60% layout.
+
+And should be aware that **quots are in the thumb finger** row.
 
 ### Layer 3: Function Keys
 
