@@ -82,10 +82,6 @@ Volume keys, Brightness keys, Media keys and Fn keys are in a layer.
 
 This is blank layer, modify as you want. I just put some commonly used symbols.
 
-## What is MA_PASS?
-
-You can input your password with one click. Change `example.password.h` to `password.h`, then put your password in `_PASSWORD`.
-
 ## LICENSE
 
     A Simple Keyboard Layout For 34-key Keyboards
