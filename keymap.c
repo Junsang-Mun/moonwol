@@ -11,7 +11,6 @@ enum layers {
 
 enum custom_keycodes {
     KC_WON = SAFE_RANGE,
-    MA_PASS,
     MA_LANG,
     MA_SPOT,
     DS_LEFT,
@@ -25,11 +24,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case KC_WON:
         if (record->event.pressed) {
             SEND_STRING("₩");
-        }
-        break;
-    case MA_PASS:
-        if (record->event.pressed) {
-            SEND_STRING(_PASSWORD);
         }
         break;
     case MA_LANG:
@@ -117,7 +111,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // |--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------|
     _______, _______, KC_UP,   _______, DT_UP,      MS_W_UP, MS_LCLK, KC_MS_U, MS_RCLK, MS_W_UP,
 // |--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------|
-    MA_PASS, KC_LEFT, KC_DOWN, KC_RGHT, DT_PRNT,    MS_W_DN, KC_MS_L, KC_MS_D, KC_MS_R, MS_W_DN,
+    _______, KC_LEFT, KC_DOWN, KC_RGHT, DT_PRNT,    MS_W_DN, KC_MS_L, KC_MS_D, KC_MS_R, MS_W_DN,
 // |--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------|
     _______, DS_LEFT, _______, DS_RGHT, DT_DOWN,    _______, TAB_R,   _______, TAB_L,   _______,
 // |--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------|
