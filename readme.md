@@ -40,7 +40,7 @@ Blue badge means tap-hold, yellow badge means combo keys.
 
 ![Layer 0](./layer/0.png)
 
-I have to use QWERTY layout(Hangul keyboard is based on QWERTY Layout). Of course if you want to use an alternative layout like Colmac, Workman, or Dvorak, you can modify it freely.
+I have to use QWERTY layout(Hangul keyboard is based on QWERTY Layout). Of course if you want to use an alternative layout like Colemak, Workman, or Dvorak, you can modify it freely.
 
 Some guys put `shift` key in the index finger spot and they claim that index finger is stronger than pinky. I personally 100% agree with that, but my muscle memory was too strong to change my habits - that's why I put `shift` key in pinky position.
 
@@ -64,7 +64,7 @@ Tab left/right keys for switching tabs in VSCode, Chrome, or other applications 
 
 Numbers are on the home row because it is more easier to access than other position.
 
-For quick adaptive from 60% key layout, symbols are following the 60% layout.
+For quick adaptive from 60% key layout, symbols are following the 60% layout. After adaptive, num row may changed to num pad for convinence.
 
 And should be aware that **quots are in the thumb finger** row.
 
