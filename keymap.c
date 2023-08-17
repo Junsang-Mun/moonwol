@@ -1,5 +1,4 @@
 #include QMK_KEYBOARD_H
-#include "password.h"
 
 enum layers {
     BASE = 0,
@@ -14,6 +13,7 @@ enum custom_keycodes {
     MA_LANG,
     MA_SPOT,
     DS_LEFT,
+    MISSION,
     DS_RGHT,
     TAB_L,
     TAB_R,
@@ -39,6 +39,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case DS_LEFT:
         if (record->event.pressed) {
             send_string(SS_LCTL(SS_TAP(X_LEFT)));
+        }
+        break;
+    case MISSION:
+        if (record->event.pressed) {
+            send_string(SS_LCTL(SS_TAP(X_UP)));
         }
         break;
     case DS_RGHT:
@@ -113,7 +118,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // |--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------|
     _______, KC_LEFT, KC_DOWN, KC_RGHT, DT_PRNT,    MS_W_DN, KC_MS_L, KC_MS_D, KC_MS_R, MS_W_DN,
 // |--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------|
-    _______, DS_LEFT, _______, DS_RGHT, DT_DOWN,    _______, TAB_R,   _______, TAB_L,   _______,
+    _______, DS_LEFT, MISSION, DS_RGHT, DT_DOWN,    _______, TAB_R,   _______, TAB_L,   _______,
 // |--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------|
                                _______, _______,    _______, _______
 ),
