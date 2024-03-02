@@ -24,7 +24,7 @@ TBH, I am not a good typier. 85 WPM in English, 500 in Korean. So I thought:
 
 > I am enough slow to handle Home Row!
 
-NO!!! FUCK NO!!!
+NO!!!
 
 Home Row mods made me like a turtle and gave me a horrible typing experience so I THROW THEM AWAY.
 
@@ -42,27 +42,21 @@ Blue badge means tap-hold, yellow badge means combo keys.
 
 I have to use QWERTY layout(Hangul keyboard is based on QWERTY Layout). Of course if you want to use an alternative layout like Colemak, Workman, or Dvorak, you can modify it freely.
 
-Some guys put `shift` key in the index finger spot and they claim that index finger is stronger than pinky. I personally 100% agree with that, but my muscle memory was too strong to change my habits - that's why I put `shift` key in pinky position.
+Some guys put `shift` key in the index finger spot and they claim that index finger is stronger than pinky. I can't agree it more, but my muscle memory was too strong to change my habits - that's why I put `shift` key in pinky position.
 
 I had to put tap-hold keys(Of course I already tried to replace tap-hold keys to combo keys, but the result fucked me up) for convenience, but putting them in rarely used keys so that my typing experience won't get ruined.
 
-### Layer 1: Arrows
+### Layer 1: Symbols #1
 
 ![Layer 1](./layer/1.svg)
 
-Arrows, Arrows, Arrows!
-
-No home rows, but personally think that tapping term key should exists for every keyboard which uses tap-hold keys. This key helps you to find the Sweet Spot easily. This keymap's default value is 130ms, you can try adding or removing 5ms per click.
-
-Desktop left/right keys are exists for macOS. They work just like `control` + `left` or `right`.
-
-Tab left/right keys for switching tabs in VSCode, Chrome, or other applications that supports switching tabs. `control` + `tab` for tab right, `control` + `shift` + `tab` for tab left.
+These keys are for the programming, since I am a programmer. For the position of `[` and `]` might be a question. In the layer 2, `(` and `)` keys are on the position of `[` and `]`. That's why - for musle memory.
 
 ### Layer 2: Numbers & Symbols
 
 ![Layer 2](./layer/2.svg)
 
-Numbers are on the home row because it is more easier to access than other position.
+Numbers are on the top row because they are more common in the normal keyboard.
 
 For quick adaptive from 60% key layout, symbols are following the 60% layout. After adaptive, num row may changed to num pad for convinence.
 
@@ -80,7 +74,7 @@ Volume keys, Brightness keys, Media keys and Fn keys are in a layer.
 
 ![Layer 4](./layer/4.svg)
 
-This is blank layer, modify as you want. I just put some commonly used symbols.
+This layer is for the arrows.
 
 ## LICENSE
 
