@@ -38,7 +38,7 @@ Blue badge means tap-hold, yellow badge means combo keys.
 
 ### Layer 0: Base layer
 
-![Layer 0](./layer/0.png)
+![Layer 0](./layer/0.svg)
 
 I have to use QWERTY layout(Hangul keyboard is based on QWERTY Layout). Of course if you want to use an alternative layout like Colemak, Workman, or Dvorak, you can modify it freely.
 
@@ -48,7 +48,7 @@ I had to put tap-hold keys(Of course I already tried to replace tap-hold keys to
 
 ### Layer 1: Arrows
 
-![Layer 1](./layer/1.png)
+![Layer 1](./layer/1.svg)
 
 Arrows, Arrows, Arrows!
 
@@ -60,7 +60,7 @@ Tab left/right keys for switching tabs in VSCode, Chrome, or other applications 
 
 ### Layer 2: Numbers & Symbols
 
-![Layer 2](./layer/2.png)
+![Layer 2](./layer/2.svg)
 
 Numbers are on the home row because it is more easier to access than other position.
 
@@ -70,7 +70,7 @@ And should be aware that **quots are in the thumb finger** row.
 
 ### Layer 3: Function Keys
 
-![Layer 3](./layer/3.png)
+![Layer 3](./layer/3.svg)
 
 Fn keys are like a white elephant. It should exists, but rarely used. So I just merged it with media keys.
 
@@ -78,7 +78,7 @@ Volume keys, Brightness keys, Media keys and Fn keys are in a layer.
 
 ### Layer 4: Left symbols
 
-![Layer 4](./layer/4.png)
+![Layer 4](./layer/4.svg)
 
 This is blank layer, modify as you want. I just put some commonly used symbols.
 
