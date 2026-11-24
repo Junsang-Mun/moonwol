@@ -29,15 +29,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     [_SYM] = LAYOUT_split_3x6_3(
         KC_TAB,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    KC_LCBR, KC_EXLM, KC_AT,   KC_HASH, KC_RCBR, KC_BSPC,
-        KC_LCTL, KC_LSFT, KC_LALT, KC_LCTL, KC_LGUI, XXXXXXX,    KC_GRV,  KC_DLR,  KC_PERC, KC_CIRC, KC_EQL,  XXXXXXX,
-        KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    KC_SCLN, KC_AMPR, KC_ASTR, KC_LPRN, KC_QUOT, KC_RSFT,
-                                   KC_ESC,  _______, KC_SPC,     KC_MINS, KC_UNDS, KC_RPRN
+        KC_LCTL, KC_LSFT, KC_LALT, KC_LCTL, KC_LGUI, KC_PLUS,    KC_GRV,  KC_DLR,  KC_PERC, KC_CIRC, KC_EQL,  XXXXXXX,
+        KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    KC_UNDS, KC_AMPR, KC_ASTR, KC_LPRN, KC_QUOT, KC_RSFT,
+                                   KC_ESC,  _______, KC_SPC,     KC_MINS, KC_RPRN, KC_CAPS
     ),
     [_NUM] = LAYOUT_split_3x6_3(
         KC_TAB,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    KC_LBRC, KC_1,    KC_2,    KC_3,    KC_RBRC, KC_BSPC,
         KC_LCTL, KC_LSFT, KC_LALT, KC_LCTL, KC_LGUI, XXXXXXX,    KC_SCLN, KC_4,    KC_5,    KC_6,    KC_EQL,  XXXXXXX,
         KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    KC_GRV,  KC_7,    KC_8,    KC_9,    KC_BSLS, KC_RSFT,
-                                   KC_ESC,  KC_TAB,  _______,    KC_BSPC, KC_ENT,  KC_0
+                                   KC_ESC,  KC_TAB,  _______,    KC_BSPC, KC_0,    KC_ENT
     ),
     [_NAV] = LAYOUT_split_3x6_3(
         KC_TAB,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    KC_HOME, KC_PGDN, KC_PGUP, KC_END,  XXXXXXX, KC_BSPC,
@@ -49,7 +49,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TAB,  KC_F10,  KC_F1,   KC_F2,   KC_F3,   SCRSHOT,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, QK_BOOT, KC_BSPC,
         KC_LCTL, KC_F11,  KC_F4,   KC_F5,   KC_F6,   LOCKSCR,    XXXXXXX, KC_LGUI, KC_LCTL, KC_LALT, KC_LSFT, XXXXXXX,
         KC_LSFT, KC_F12,  KC_F7,   KC_F8,   KC_F9,   XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_RSFT,
-                                   DSK_L,   MSN_CTL, DSK_R,      KC_BSPC, _______, KC_CAPS
+                                   MSN_CTL, DSK_L,   DSK_R,      KC_BSPC, _______, KC_CAPS
     ),
 };
 
