@@ -37,10 +37,10 @@ Yes, Windows dominates the market, but I don't care. I use a Mac as my daily dri
 Blue badges mark tap-hold keys; yellow badges mark combos.
 
 ### crkbd(corne, 42-key) version
-![crkbd moonwol keymap](./image/crkbd.png)
+![crkbd moonwol keymap](./_image/crkbd.png)
 
 ### sweep(34-key) version
-![sweep moonwol keymap](./image/sweep.png)
+![sweep moonwol keymap](./_image/sweep.png)
 
 ## License
 
