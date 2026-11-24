@@ -66,28 +66,84 @@ bottom badges mark tap-hold keys; hanging badges mark combos.
 
 ## Build
 
-Both versions use the same `config.h` and `rules.mk`:
+Both versions share the same `config.h` and `rules.mk`:
 
 - `TAPPING_TERM 200`, `PERMISSIVE_HOLD`
 - `COMBO_TERM 40`
-- `EE_HANDS`
-- RP2040 controller via `CONVERT_TO = rp2040_ce`
+- `EE_HANDS` (each half remembers whether it is left or right)
+- `LTO_ENABLE` (smaller firmware)
 
-Copy the keymap folder into your `qmk_firmware`:
+They are set up for an **RP2040** controller by default. For a **Pro Micro**, see [Pro Micro](#pro-micro-atmega32u4) below.
 
-| Keyboard | Path |
-|---|---|
-| Corne | `keyboards/crkbd/keymaps/moonwol/` |
-| Sweep | `keyboards/ferris/keymaps/moonwol/` |
+### 1. Copy the keymap into `qmk_firmware`
 
-Then build:
+| Keyboard | From this repo | To |
+|---|---|---|
+| Corne | `crkbd/` | `keyboards/crkbd/keymaps/moonwol/` |
+| Sweep | `sweep/` | `keyboards/ferris/keymaps/moonwol/` |
+
+```sh
+cp -r crkbd ~/qmk_firmware/keyboards/crkbd/keymaps/moonwol
+cp -r sweep ~/qmk_firmware/keyboards/ferris/keymaps/moonwol
+```
+
+### 2. Build and flash
+
+#### RP2040
+
+Nothing to change. `rules.mk` already has `CONVERT_TO = rp2040_ce`, which builds for RP2040 boards that use the Pro Micro footprint.
 
 ```sh
 qmk compile -kb crkbd/rev1 -km moonwol
 qmk compile -kb ferris/sweep -km moonwol
 ```
 
-Because of `EE_HANDS`, flash each half once with its handedness (`-bl uf2-split-left` / `-bl uf2-split-right`).
+Because of `EE_HANDS`, flash each half with its handedness:
+
+```sh
+# left half
+qmk flash -kb crkbd/rev1 -km moonwol -bl uf2-split-left
+# right half
+qmk flash -kb crkbd/rev1 -km moonwol -bl uf2-split-right
+```
+
+For the Sweep, use `-kb ferris/sweep` instead.
+
+To get into the bootloader, double-tap the reset button (`RP2040_BOOTLOADER_DOUBLE_TAP_RESET`) or press `BOOT` on the FN layer. The half shows up as a drive named `RPI-RP2`, and `qmk flash` copies the firmware onto it.
+
+#### Pro Micro (ATmega32U4)
+
+Remove the RP2040 lines first:
+
+```diff
+ # rules.mk
+-CONVERT_TO = rp2040_ce
+```
+
+```diff
+ // config.h
+-#define RP2040_BOOTLOADER_DOUBLE_TAP_RESET
+```
+
+Then build the same way:
+
+```sh
+qmk compile -kb crkbd/rev1 -km moonwol
+qmk compile -kb ferris/sweep -km moonwol
+```
+
+Flash each half with its handedness:
+
+```sh
+# left half
+qmk flash -kb crkbd/rev1 -km moonwol -bl avrdude-split-left
+# right half
+qmk flash -kb crkbd/rev1 -km moonwol -bl avrdude-split-right
+```
+
+For the Sweep, use `-kb ferris/sweep` instead.
+
+When `qmk flash` starts waiting for the board, press the reset button (or short `RST` and `GND`) or press `BOOT` on the FN layer.
 
 ## License
 
