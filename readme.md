@@ -1,4 +1,4 @@
-# moonwol — A Simple Keymap for 34-Key Keyboards
+# moonwol — A Simple Keymap for 34-Key and 42-Key Keyboards
 
 I tried hard to settle on an existing keymap, but every one I tried had something that bugged me.
 
@@ -7,6 +7,24 @@ So I figured: why not make my own?
 > ...after countless eons of tinkering...
 
 Boom. Meet **moonwol**.
+
+## moonwol v2
+
+This is the second version of moonwol. After using v1 for a while, I fixed the parts that kept bugging me, using [Miryoku](https://github.com/manna-harbour/miryoku) as a reference:
+
+- **Mods on every layer.** Each non-base layer has Shift/Alt/Ctrl/Cmd on the home row of the hand that isn't busy, so I can hold a layer and add modifiers without moving.
+- **Numpad-shaped numbers and F-keys.** Numbers moved from the top row into a 3×3 grid, and F1–F12 follow the same shape.
+- **Editing on the nav layer.** Arrows sit on `HJKL`, with Undo/Cut/Copy/Paste/Redo on the other hand.
+- **Thumbs carry the layers.** Each thumb key taps as a key and holds as a layer.
+
+What I did *not* take from Miryoku is home row mods on the base layer. See below for why.
+
+moonwol v2 comes in two versions that share the same layers, combos and QMK config:
+
+| Keyboard | Keys | QMK keyboard | Layout macro |
+|---|---|---|---|
+| Corne (crkbd) | 42 | `crkbd/rev1` | `LAYOUT_split_3x6_3` |
+| Ferris Sweep | 34 | `ferris/sweep` | `LAYOUT_split_3x5_2` |
 
 ## Design Principles
 
@@ -28,19 +46,48 @@ Nope.
 
 Home row mods slowed me to a crawl and made typing miserable, so I ditched them.
 
+Modifiers live on combos (`S`+`D` = Cmd, `X`+`C` = Alt, ...) and on the home row of every non-base layer instead. The one exception is the 34-key version: it has no outer columns, so the outer pinky keys (`A`, `Z`, `;`, `/`) double as Ctrl and Shift.
+
 ### 3. UNIX-Friendly
 
 Yes, Windows dominates the market, but I don't care. I use a Mac as my daily driver and Linux as my backup machine.
 
+Layers are built around macOS shortcuts (Cmd+Z/X/C/V, screenshot, lock screen, desktop switching). Korean/English input is switched with Ctrl+Space, so there's no dedicated IME key.
+
 ## Layers
 
-Blue badges mark tap-hold keys; yellow badges mark combos.
+bottom badges mark tap-hold keys; hanging badges mark combos.
 
-### crkbd(corne, 42-key) version
+### crkbd (Corne, 42-key) version
 ![crkbd moonwol keymap](./_image/crkbd.png)
 
-### sweep(34-key) version
+### Sweep (34-key) version
 ![sweep moonwol keymap](./_image/sweep.png)
+
+## Build
+
+Both versions use the same `config.h` and `rules.mk`:
+
+- `TAPPING_TERM 200`, `PERMISSIVE_HOLD`
+- `COMBO_TERM 40`
+- `EE_HANDS`
+- RP2040 controller via `CONVERT_TO = rp2040_ce`
+
+Copy the keymap folder into your `qmk_firmware`:
+
+| Keyboard | Path |
+|---|---|
+| Corne | `keyboards/crkbd/keymaps/moonwol/` |
+| Sweep | `keyboards/ferris/keymaps/moonwol/` |
+
+Then build:
+
+```sh
+qmk compile -kb crkbd/rev1 -km moonwol
+qmk compile -kb ferris/sweep -km moonwol
+```
+
+Because of `EE_HANDS`, flash each half once with its handedness (`-bl uf2-split-left` / `-bl uf2-split-right`).
 
 ## License
 
