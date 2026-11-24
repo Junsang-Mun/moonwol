@@ -1,0 +1,11 @@
+#pragma once
+
+#define EE_HANDS
+
+#define TAPPING_TERM
+#define PERMISSIVE_HOLD
+#define TAPPING_TERM_PER_KEY
+
+#define COMBO_TERM 40
+
+#define RP2040_BOOTLOADER_DOUBLE_TAP_RESET
